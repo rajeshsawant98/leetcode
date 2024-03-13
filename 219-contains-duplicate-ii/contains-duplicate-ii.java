@@ -7,9 +7,9 @@ class Solution {
             if (map.containsKey(nums[i]) && Math.abs(map.get(nums[i]) - i) <= k) {
                 System.gc();
                 return true;
+            }
 
-            } else
-                map.put(nums[i], i);
+            map.put(nums[i], i);
 
         }
         System.gc();
