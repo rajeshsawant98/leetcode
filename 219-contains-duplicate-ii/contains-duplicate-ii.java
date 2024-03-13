@@ -5,6 +5,7 @@ class Solution {
 
         for (int i = 0; i < nums.length; i++) {
             if (map.containsKey(nums[i]) && Math.abs(map.get(nums[i]) - i) <= k) {
+                System.gc();
                 return true;
 
             } else
