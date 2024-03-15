@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public int longestConsecutive(int[] nums) {
         // Check if the input array is null or empty
