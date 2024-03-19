@@ -13,6 +13,6 @@ class Solution {
             l++;
         }
 
-        return new int[2];
+        return new int[]{};
     }
 }
