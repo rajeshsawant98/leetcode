@@ -1,20 +1,12 @@
 class Solution {
     public int missingNumber(int[] nums) {
-
-        Map<Integer,Integer> map= new HashMap<>();
-     
-        for(int i:nums){
-            map.put(i,i);
-                   
-           }
-
-           for(int j=0;j<=nums.length;j++){
-            if(!map.containsKey(j)){
-                return j;
-            }
-           }
-
-           return 0;
-        
+      int sum = 0;
+      int exp = (nums.length)*(nums.length+1)/2;
+      
+      for(int i: nums){
+        sum += i;
+      }
+      
+      return exp-sum;
     }
 }
