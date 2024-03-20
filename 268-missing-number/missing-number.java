@@ -2,12 +2,10 @@ class Solution {
     public int missingNumber(int[] nums) {
 
         Map<Integer,Integer> map= new HashMap<>();
-
-        int c=0;
-
+     
         for(int i:nums){
-            map.put(i,c);
-            c++;           
+            map.put(i,i);
+                   
            }
 
            for(int j=0;j<=nums.length;j++){
