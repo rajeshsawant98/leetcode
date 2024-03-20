@@ -6,7 +6,7 @@ class Solution {
       for(int i: nums){
         sum += i;
       }
-      System.gc();
+    //  System.gc();
       return exp-sum;
     }
 }
