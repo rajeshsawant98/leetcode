@@ -3,9 +3,12 @@ class Solution {
         boolean[] vis = new boolean[nums.length+1];
         for(int i:nums){
             if(vis[i] == false){
+                
                 vis[i] = true;
             }
-           else{ return i;}
+            
+           else{ 
+            return i;}
         }
          System.gc();
         return -1;
