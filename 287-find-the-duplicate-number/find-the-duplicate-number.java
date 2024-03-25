@@ -1,16 +1,16 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        boolean[] vis = new boolean[nums.length+1];
-        for(int i:nums){
-            if(vis[i] == false){
-                
-                vis[i] = true;
-            }
-            
-           else{ 
-            return i;}
+    boolean [] isPresent = new boolean[nums.length+1];
+    for(int i:nums){
+        if(isPresent[i]){
+            System.gc();
+            return i;
         }
-         System.gc();
-        return -1;
+        else {
+            isPresent[i]=true;
+        }
+     }
+      System.gc();
+     return -1;
     }
 }
