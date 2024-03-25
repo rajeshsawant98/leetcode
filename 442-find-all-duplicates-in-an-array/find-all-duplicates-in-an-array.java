@@ -5,10 +5,14 @@ class Solution {
         List<Integer> res=new ArrayList<>();
 
         for(int i:nums){
-            if(set.contains(i)){
-                res.add(i);
-            }
-            set.add(i);
+           i=Math.abs(i);
+
+           if(nums[i-1]<0){
+            res.add(i);
+           }
+           
+           nums[i-1] = -nums[i-1];
+
         }
 
         return res;
