@@ -1,37 +1,30 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        Map<Integer,Integer> map= new HashMap<>();
-        int max= Integer.MIN_VALUE;
-
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]>max){
-                max=nums[i];
-            }
-            map.put(nums[i],map.getOrDefault(nums[i],0)+1);
-        }
-
-        int j=2;
-
-        if(max==1){
-            return 2;
-        }
-
-        if(map.containsKey(1)){
-            while(j<=max)
-            {
-                if(j==max){
-                    return max+1;
-                }
-                else if(!map.containsKey(j)){
-                    return j;
-                }
-               
-
-                j++;
-
+        int n = nums.length;
+        
+        // Step 1: Mark non-positive integers and numbers greater than n as irrelevant
+        for (int i = 0; i < n; i++) {
+            if (nums[i] <= 0 || nums[i] > n) {
+                nums[i] = n + 1;
             }
         }
-
-             return 1;
+        
+        // Step 2: Use the array indices as markers to indicate presence of a number
+        for (int i = 0; i < n; i++) {
+            int num = Math.abs(nums[i]);
+            if (num <= n) {
+                nums[num - 1] = -Math.abs(nums[num - 1]);
+            }
+        }
+        
+        // Step 3: Find the first index not marked
+        for (int i = 0; i < n; i++) {
+            if (nums[i] > 0) {
+                return i + 1;
+            }
+        }
+        
+        // Step 4: If all indices are marked, return n + 1
+        return n + 1;
     }
 }
