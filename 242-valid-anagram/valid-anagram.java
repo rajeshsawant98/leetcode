@@ -15,6 +15,9 @@ class Solution {
         for(char c1: t.toCharArray())
         {
             map.put(c1,map.getOrDefault(c1,0)-1);
+            if(map.get(c1)<0){
+                return false;
+            }
         }
 
         for(char c2: map.keySet())
