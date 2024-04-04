@@ -1,22 +1,30 @@
 class Solution {
-    static HashMap<Character,Integer>makeFreqMap(String str){
-        HashMap<Character,Integer>mp = new HashMap<>();
-        for(int i=0;i<str.length();i++){
-            char ch = str.charAt(i);
-            if(!mp.containsKey(ch)){
-                mp.put(ch,1);
-            }else{
-                int CurrFreq = mp.get(ch);
-                mp.put(ch,CurrFreq+1);
-            }
-        }
-        return mp;
-    }
     public boolean isAnagram(String s, String t) {
-        if(s.length()!=t.length())
-        return false;
-        HashMap<Character,Integer>Mp1 = makeFreqMap(s);
-        HashMap<Character,Integer>Mp2 = makeFreqMap(t);
-        return Mp1.equals(Mp2);
+
+        if(s.length()!= t.length()){
+            return false;
+        }
+        
+        Map<Character,Integer> map=new HashMap<>();
+
+        for(char c: s.toCharArray())
+        {
+            map.put(c,map.getOrDefault(c,0)+1);
+        }
+
+        for(char c1: t.toCharArray())
+        {
+            map.put(c1,map.getOrDefault(c1,0)-1);
+        }
+
+        for(char c2: map.keySet())
+        { 
+            if(map.get(c2)!=0){
+                return false;
+            }
+
+        }
+
+        return true;
     }
 }
