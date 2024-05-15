@@ -20,7 +20,7 @@ class Solution {
             else if(map.get(c[i])<map.get(c[i+1])){
                 num-=map.get(c[i]);
             }
-            else if(map.get(c[i])>=map.get(c[i+1])){
+            else {
                 num+=map.get(c[i]);
             }
         }
