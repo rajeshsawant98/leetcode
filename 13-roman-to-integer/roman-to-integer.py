@@ -23,6 +23,6 @@ class Solution(object):
                 ans -= value
             if value >= prev:
                 ans += value
-            prev = value
+                prev = value
         return ans
             
