@@ -21,10 +21,9 @@ class Solution(object):
 
         for c in reversed(s):
             value = map[c]
+            ans += value
             if value < prev:
-                ans -= value
-            if value >= prev:
-                ans += value
-                prev = value
+                ans -= 2*value
+            prev = value   
         return ans
             
