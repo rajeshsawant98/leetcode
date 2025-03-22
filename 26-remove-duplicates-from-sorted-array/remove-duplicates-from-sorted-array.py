@@ -4,19 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        if not nums:
+            return 0
         
-        nums1 =[]
-        nmap={}
-        k=0
-        for i,n in enumerate(nums):
-            if n not in nmap:
-                nums1.append(n)
-                nmap[n]=1
+        k=1
+        for i in range(1, len(nums)):
+            if nums[i] != nums[i-1]:
+                nums[k]=nums[i]
                 k +=1
-                
+        
+        return k
             
-        nums[:]=nums1
-        return k 
         
                 
             
