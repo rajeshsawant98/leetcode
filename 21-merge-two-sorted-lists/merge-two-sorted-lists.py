@@ -25,8 +25,7 @@ class Solution(object):
 
         if list1:
             head.next = list1
-        
-        if list2:
+        else:
             head.next = list2
         
         return ans.next
