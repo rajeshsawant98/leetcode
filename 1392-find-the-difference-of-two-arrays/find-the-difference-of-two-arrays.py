@@ -7,15 +7,15 @@ class Solution(object):
         """
         
 
-        Set1= set()
-        Set2= set()
+        Set1= set(nums1)
+        Set2= set(nums2)
 
-        for n in nums1:
-            if  n not in Set1:
-                Set1.add(n)
+        # for n in nums1:
+        #     if  n not in Set1:
+        #         Set1.add(n)
         
-        for m in nums2:
-            if m not in Set2:
-                Set2.add(m)
+        # for m in nums2:
+        #     if m not in Set2:
+        #         Set2.add(m)
         
         return [list(Set1 - Set2) , list(Set2-Set1)]
