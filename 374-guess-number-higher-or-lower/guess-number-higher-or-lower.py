@@ -19,7 +19,6 @@ class Solution(object):
 
             if guess(m)==0:
                 return m
-                break
             elif guess(m)==-1:
                 r=m-1
             elif guess(m)==1:
