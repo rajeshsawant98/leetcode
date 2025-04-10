@@ -5,22 +5,26 @@ class Solution(object):
         :type h: int
         :rtype: int
         """
-        l,r= 1, max(piles)
-        res = r
 
+        l,r = 1, max(piles)
+        res=r
 
         while(l<=r):
-            k=(l+r)//2
-            hours = 0
 
-            for p in piles:
-                hours += math.ceil(float(p)/k)
+            m=(l+r)//2
+            hours=0
             
-            if hours <= h:
-                res = k
-                r= k-1
+            for p in piles:
+                hours += math.ceil(float(p)/m)
+            
+            if hours<=h:
+                res= m
+                r = m-1
             else:
-                l= k+1
-
+                l= m+1
+        
         return res
+
+
+
         
