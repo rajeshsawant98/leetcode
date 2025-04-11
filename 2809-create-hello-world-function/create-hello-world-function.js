@@ -3,13 +3,12 @@
  */
 var createHelloWorld = function() {
     
-    return ()   => 
-        "Hello World"
-    
+    const message = 'Hello World'
+    return function(...args) {
+       return message
+    }
 };
 
-const f= createHelloWorld();
-f();
 /**
  * const f = createHelloWorld();
  * f(); // "Hello World"
