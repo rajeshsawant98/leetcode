@@ -7,10 +7,10 @@ class Solution(object):
         
         hs = set()
 
-        for i in range(len(nums)):
-            if nums[i] in hs:
+        for i in nums:
+            if i in hs:
                 return True
             else:
-                hs.add(nums[i])
+                hs.add(i)
         
         return False
