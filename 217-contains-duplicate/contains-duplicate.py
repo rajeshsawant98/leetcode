@@ -4,13 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        unique={}
+        
+        hs = set()
 
-        for i in nums:
-            if i not in unique:
-                unique[i]=1
-            else:
+        for i in range(len(nums)):
+            if nums[i] in hs:
                 return True
+            else:
+                hs.add(nums[i])
         
         return False
-        
