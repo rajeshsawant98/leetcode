@@ -11,7 +11,7 @@ class Solution(object):
         :rtype: int
         """
         
-        self.Max = 0
+        self.res = 0
 
         def height(node):
 
@@ -21,10 +21,10 @@ class Solution(object):
             left = height(node.left)
             right = height(node.right)
 
-            self.Max = max(self.Max, left+right)
+            self.res = max(self.res, left+right)
 
             return 1 + max(left,right)
         
         height(root)
 
-        return self.Max
+        return self.res
