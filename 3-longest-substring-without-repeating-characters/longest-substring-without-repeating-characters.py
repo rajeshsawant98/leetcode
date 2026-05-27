@@ -1,20 +1,16 @@
-class Solution(object):
-    def lengthOfLongestSubstring(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        l=0
-        r=0
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        res = 0
 
-        cmap={}
-        m=0
+        charSet = set()
 
-        while(r<len(s)):
-            if s[r] in cmap:
-                l = max(cmap[s[r]] + 1, l)
-            cmap[s[r]]=r
-            m = max(m,r-l+1)
-            r+=1
+        l = 0
+
+        for r in range(len(s)):
+            while s[r] in charSet:
+                charSet.remove(s[l])
+                l += 1
+            charSet.add(s[r])
+            res = max (res,r-l +1)
         
-        return m
+        return res
