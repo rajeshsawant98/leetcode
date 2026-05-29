@@ -22,6 +22,8 @@ class Solution(object):
 
             sol.pop()
             backtrack(i+1,sol,total)
+
+            return
         
         backtrack(0,[],0)
 
