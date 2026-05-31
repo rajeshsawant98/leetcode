@@ -6,11 +6,10 @@ class Solution(object):
         """
         
         res,sol = [],[]
-
         n = len(nums)
 
         def backtrack(i):
-            if i == n :
+            if i == n:
                 res.append(sol[:])
                 return
             
@@ -19,10 +18,8 @@ class Solution(object):
 
             sol.pop()
             backtrack(i+1)
-
             return
         
         backtrack(0)
 
         return res
-
