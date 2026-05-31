@@ -5,10 +5,10 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        n = len(candidates)
         res = []
+        n = len(candidates)
 
-        def backtrack(i, sol, total):
+        def backtrack(i,sol,total):
             if total == target:
                 res.append(sol[:])
                 return
@@ -16,9 +16,8 @@ class Solution(object):
             if i == n or total > target:
                 return
             
-
             sol.append(candidates[i])
-            backtrack(i,sol, total+candidates[i])
+            backtrack(i,sol,total+candidates[i])
 
             sol.pop()
             backtrack(i+1,sol,total)
