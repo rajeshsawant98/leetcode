@@ -4,27 +4,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res =[]
-        n = len(nums)
+
         nums.sort()
+        res = []
+        n = len(nums)
 
-        def backtrack(i,subset):
-            if i == n:
-                res.append(subset[:])
-                return
-            
-            # include the subsets with nums[i]
-            subset.append(nums[i])
-            backtrack(i+1,subset)
-            subset.pop()
+        def backtrack(start,path):
+            res.append(path[:])
 
-            #subsets that don't include nums[i]
+            for i in range(start,n):
+                if i>start and nums[i] == nums[i-1]:
+                    continue
 
-            while i+1< n and nums[i] == nums[i+1]:
-                i += 1
-            
-            backtrack(i+1,subset)
+                path.append(nums[i])
+                backtrack(i+1,path)
+                path.pop()
 
         backtrack(0,[])
 
-        return res
+        return res 
