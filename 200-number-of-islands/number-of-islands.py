@@ -7,8 +7,8 @@ class Solution(object):
         if not grid:
             return 0
         
-        rows, cols = len(grid),len(grid[0])
         visit = set()
+        rows, cols = len(grid), len(grid[0])
         islands = 0
 
         def bfs(r,c):
@@ -18,13 +18,14 @@ class Solution(object):
 
             while q:
                 row, col = q.popleft()
-                directions = [[1,0], [-1,0],[0,1],[0,-1]]
-                
-                for dr,dc in directions:
-                    r ,c = row + dr , col + dc
-                    if (r in range(rows) and c in range(cols) and grid[r][c]== "1" and (r,c) not in visit):
-                        q.append((r,c))
+
+                directions = [[1,0],[-1,0],[0,1],[0,-1]]
+
+                for dr, dc in directions:
+                    r, c= row + dr , col + dc
+                    if(r in range(rows) and c in range(cols) and grid[r][c] == "1" and (r,c) not in visit):
                         visit.add((r,c))
+                        q.append((r,c))
 
 
 
@@ -33,6 +34,6 @@ class Solution(object):
             for c in range(cols):
                 if grid[r][c] == "1" and (r,c) not in visit:
                     bfs(r,c)
-                    islands +=1
+                    islands += 1
         
         return islands
