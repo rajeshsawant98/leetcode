@@ -13,7 +13,7 @@ class Solution(object):
         :rtype: Node
         """
 
-        oldToNew ={}
+        oldToNew = {}
 
         def dfs(node):
             if node in oldToNew:
@@ -21,8 +21,11 @@ class Solution(object):
             
             tmp = Node(node.val)
             oldToNew[node] = tmp
+
             for nei in node.neighbors:
                 tmp.neighbors.append(dfs(nei))
+            
             return tmp
+
         
         return dfs(node) if node else None
