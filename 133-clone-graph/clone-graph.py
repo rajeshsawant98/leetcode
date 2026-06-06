@@ -20,7 +20,7 @@ class Solution(object):
                 return oldToNew[node]
             
             tmp = Node(node.val)
-            oldToNew[node] = tmp
+            oldToNew[node] = tmp 
 
             for nei in node.neighbors:
                 tmp.neighbors.append(dfs(nei))
@@ -28,4 +28,5 @@ class Solution(object):
             return tmp
 
         
-        return dfs(node) if node else None
+
+        return  dfs(node) if node else None
