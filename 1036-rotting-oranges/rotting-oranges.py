@@ -30,5 +30,5 @@ class Solution(object):
                         fresh -= 1
             time +=1
         
-        return time if fresh<=0 else -1
+        return time if fresh==0 else -1
 
