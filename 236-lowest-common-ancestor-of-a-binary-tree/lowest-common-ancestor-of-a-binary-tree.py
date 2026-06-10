@@ -14,10 +14,8 @@ class Solution(object):
         :rtype: TreeNode
         """
 
-        if not root:
-            return root
         
-        if root.val == p.val or root.val == q.val:
+        if root is None or root.val == p.val or root.val == q.val:
             return root
         
         L = self.lowestCommonAncestor(root.left,p,q)
