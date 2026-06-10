@@ -10,17 +10,23 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        def dfs(root, maxVal):
+        self.count = 0
+
+        def dfs(root,currMax):
+
             if not root:
                 return 0
             
-            res = 1 if root.val >= maxVal else 0 
-            maxVal = max(root.val, maxVal)
+            if root.val >= currMax:
+                self.count += 1
+            
+            currMax = max(currMax, root.val)
+            
+            dfs(root.left,currMax)
+            dfs(root.right,currMax)
+            return 
+        
+        dfs(root,root.val)
 
-            res += dfs(root.left,maxVal)
-            res += dfs(root.right,maxVal)
-
-            return res
-
-        return dfs(root,root.val)
+        return self.count
       
