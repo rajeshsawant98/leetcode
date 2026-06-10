@@ -13,18 +13,17 @@ class Solution(object):
         
         self.res = 0
 
-        def height(node):
-
-            if not node:
+        def dfs(root):
+            if not root:
                 return 0
             
-            left = height(node.left)
-            right = height(node.right)
+            LH = dfs(root.left)
+            RH = dfs(root.right)
 
-            self.res = max(self.res, left+right)
+            self.res = max(self.res , LH+RH)
 
-            return 1 + max(left,right)
+            return 1 + max(LH,RH)
         
-        height(root)
+        dfs(root)
 
         return self.res
