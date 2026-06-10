@@ -15,7 +15,7 @@ class Solution(object):
         """
 
         
-        if root is None or root.val == p.val or root.val == q.val:
+        if root is None or root == p or root == q:
             return root
         
         L = self.lowestCommonAncestor(root.left,p,q)
