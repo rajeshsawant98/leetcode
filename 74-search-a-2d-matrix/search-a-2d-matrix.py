@@ -5,29 +5,31 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        rows , cols = len(matrix), len(matrix[0])
+        rows,cols = len(matrix), len(matrix[0])
 
-        top,bot = 0 , rows-1
+        top, bottom = 0, rows - 1
 
-        while(top<=bot):
-            row= (top+bot)//2
-            if target> matrix[row][-1]:
-                top = row + 1
+        while(top <= bottom):
+            row = (top + bottom)//2
+            if target > matrix[row][-1]:
+                top = row +1
             elif target < matrix[row][0]:
-                bot = row -1
+                bottom = row - 1
             else:
                 break
         
-        if not top <= bot:
+        if not(top<=bottom):
             return False
         
-        l,r=0 , cols-1
+        row = (top + bottom) //2
+
+        l, r = 0, cols-1
         while(l<=r):
-            m= (l+r)//2
-            if target > matrix[row][m]:
-                l = m+1
-            elif target < matrix[row][m]:
-                r= m-1
+            mid = (l+r)//2
+            if target > matrix[row][mid]:
+                l = mid +1
+            elif target < matrix[row][mid]:
+                r = mid -1
             else:
                 return True
         
