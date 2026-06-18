@@ -1,43 +1,46 @@
-class Solution(object):
-    def canFinish(self, numCourses, prerequisites):
-        """
-        :type numCourses: int
-        :type prerequisites: List[List[int]]
-        :rtype: bool
-        """
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        preMap = {i: [] for i in range(numCourses)}
+
+        for course, preReq in prerequisites:
+
+            preMap[course].append(preReq)
+
         visit = set()
 
-        CMAP = { i:[] for i in range(numCourses)}
-
-        #create dependency map
-
-        for course, prereq in prerequisites:
-            CMAP[course].append(prereq)
-        
         def dfs(c):
+
             if c in visit:
+
                 return False
-            
-            if CMAP[c] == []:
+
+            if preMap[c] == []:
+
                 return True
 
             visit.add(c)
 
-            for prereq in CMAP[c]:
-                if not dfs(prereq):
+            for preReq in preMap[c]:
+
+                if not dfs(preReq):
+
                     return False
-            
+
             visit.remove(c)
-            CMAP[c] = []
+
+            preMap[c] = []
 
             return True
-        
-        for c in CMAP.keys():
+
+        for c in range(numCourses):
+
+            if not dfs(c):
+
+                return False
+
+        return True
+
+        for c in preMap.keys():
             if not dfs(c): return False
         
         return True
-
-
-        
-
-
