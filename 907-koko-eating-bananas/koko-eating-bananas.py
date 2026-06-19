@@ -1,30 +1,21 @@
-class Solution(object):
-    def minEatingSpeed(self, piles, h):
-        """
-        :type piles: List[int]
-        :type h: int
-        :rtype: int
-        """
-
+class Solution:
+    def minEatingSpeed(self, piles: List[int], h: int) -> int:
         l,r = 1, max(piles)
-        res=r
+        k = r 
 
         while(l<=r):
+            mid = (l+r)//2
+            hours = 0
 
-            m=(l+r)//2
-            hours=0
-            
             for p in piles:
-                hours += math.ceil(float(p)/m)
+                hours += math.ceil(p/mid)
             
-            if hours<=h:
-                res= m
-                r = m-1
+            if hours <= h:
+                k = mid
+                r = mid -1
             else:
-                l= m+1
+                l = mid + 1
         
-        return res
+        return k
 
-
-
-        
+            
