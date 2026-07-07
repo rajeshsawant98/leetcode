@@ -1,14 +1,18 @@
 class Solution:
     def mergeTriplets(self, triplets: List[List[int]], target: List[int]) -> bool:
-        good = set()
+        fx= fy = fz = False
+        x,y,z = target
 
-        for t in triplets:
-            if t[0] > target[0] or t[1] > target[1] or t[2] > target[2] :
-                continue
-            
-            for i, v in enumerate(t):
-                if t[i]== target[i]:
-                    good.add(i)
-            
+        for a,b,c in triplets:
+            if a<=x and b<=y and c<=z:
+                if a==x:
+                    fx= True
+                if b==y:
+                    fy= True
+                if c==z:
+                    fz= True
+                
+                if fx and fy and fz:
+                    return True
         
-        return len(good) == 3
+        return False
