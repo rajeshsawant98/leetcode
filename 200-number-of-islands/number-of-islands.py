@@ -6,9 +6,6 @@ class Solution:
 
         def bfs(r,c):
             
-            if (r,c) in visit:
-                return
-            
             q = collections.deque()
 
             q.append([r,c])
