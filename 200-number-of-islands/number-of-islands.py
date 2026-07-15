@@ -12,6 +12,7 @@ class Solution:
             q = collections.deque()
 
             q.append([r,c])
+            visit.add((r, c))
 
             directions = [[1,0],[-1,0],[0,1],[0,-1]]
 
