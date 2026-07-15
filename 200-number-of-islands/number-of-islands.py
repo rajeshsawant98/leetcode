@@ -8,10 +8,10 @@ class Solution:
             
             q = collections.deque()
 
-            q.append([r,c])
+            q.append((r,c))
             visit.add((r, c))
 
-            directions = [[1,0],[-1,0],[0,1],[0,-1]]
+            directions = [(1,0),(-1,0),(0,1),(0,-1)]
 
             while q:
                 row,col = q.popleft()
@@ -20,7 +20,7 @@ class Solution:
                     r,c = row+dr,col+dc
 
                     if r in range(rows) and c in range(cols) and grid[r][c] == "1" and (r,c) not in visit:
-                        q.append([r,c])
+                        q.append((r,c))
                         visit.add((r,c))
         
 
