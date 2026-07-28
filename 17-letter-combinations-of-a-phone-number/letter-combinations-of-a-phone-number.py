@@ -1,25 +1,34 @@
-class Solution(object):
-    def letterCombinations(self, digits):
-        """
-        :type digits: str
-        :rtype: List[str]
-        """
-        res = []
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
         
-        charToDigits = { "2":"abc", "3":"def", "4":"ghi", "5":"jkl",
-                        "6":"mno", "7":"pqrs","8":"tuv","9":"wxyz"}
+        Map = {
+            "2" : ["a","b","c"],
+            "3" : ["d","e","f"],
+            "4" : ["g","h","i"],
+            "5" : ["j","k","l"],
+            "6" : ["m","n","o"],
+            "7" : ["p","q","r","s"],
+            "8" : ["t","u","v"],
+            "9" : ["w","x","y","z"]
+        }
 
-        
+
+        res = [] 
+
         def backtrack(i,path):
-
-            if len(path) == len(digits):
-                res.append(path)
+            if i == len(digits):
+                res.append("".join(path[:]))
                 return
-        
-            for c in charToDigits[digits[i]]:
-                backtrack(i+1, path + c)
             
-        if digits:
-            backtrack(0,"")
+                
+            for c in Map[digits[i]]:
+                path.append(c)
+                backtrack(i+1,path)
+                path.pop()
         
+        
+        backtrack(0,[])
+
         return res
+
+
