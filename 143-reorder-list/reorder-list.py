@@ -8,31 +8,37 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-                #find middle
-        slow , fast = head, head.next
+        
+        # split in two list 
+        slow,fast = head, head.next
 
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         
-        #reverse second half
+
         second = slow.next 
-        prev = slow.next = None
+        slow.next = None
+
+        #reverse the second list  
+
+        prev,curr = None, second 
+        while curr:
+            tmp = curr.next
+            curr.next = prev 
+            prev = curr
+            curr = tmp 
+
+        first,second = head,prev 
 
         while second:
-            tmp = second.next
-            second.next = prev
-            prev = second
-            second = tmp
-        
-        #merge two halfs
-        first, second = head, prev
-        while second:
-            tmp1, tmp2 = first.next, second.next
+            tmp1, tmp2 = first.next, second.next 
             first.next = second
             second.next = tmp1
-            first = tmp1
+            first = tmp1 
             second = tmp2
+        
+
 
         
 
