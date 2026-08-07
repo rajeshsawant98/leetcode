@@ -1,56 +1,58 @@
-class Node:
-    def __init__(self, key: int, val: int):
-        self.key, self.val = key, val
-        self.prev = self.next = None
+class ListNode:
+    def __init__(self, key: int, value: int):
+        self.key = key 
+        self.val = value
+        self.next = None
+        self.prev = None
+
 
 class LRUCache:
 
     def __init__(self, capacity: int):
         self.cap = capacity
         self.cache = {}
-        self.left, self.right = Node(0,0), Node(0,0)
+        self.left = ListNode(0,0)
+        self.right = ListNode(0,0)
         self.left.next = self.right
         self.right.prev = self.left
     
-    def insert(self, Node):
+    def remove(self, node: ListNode):
+        prev, nxt = node.prev, node.next
+        prev.next = nxt
+        nxt.prev = prev
+
+    def insert(self, node: ListNode):
         prev, nxt = self.right.prev, self.right
-        prev.next = nxt.prev = Node
-        Node.next, Node.prev = nxt, prev
-    
-    def delete(self, Node):
-        prev, nxt = Node.prev, Node.next
-        prev.next, nxt.prev = nxt, prev
+        prev.next = node
+        node.next = nxt 
+        node.prev = prev
+        nxt.prev = node
 
     def get(self, key: int) -> int:
         if key in self.cache:
-            self.delete(self.cache[key])
-            self.insert(self.cache[key])
+            Node = self.cache[key]
 
-            return self.cache[key].val
+            self.remove(Node)
+            self.insert(Node)
+            return Node.val
+        else:
+            return -1
         
-        return -1
 
     def put(self, key: int, value: int) -> None:
-
         if key in self.cache:
-            self.delete(self.cache[key])
-        self.cache[key] = Node(key,value)
-        self.insert(self.cache[key])
+            Node = self.cache[key]
+            self.remove(Node)
+        NewNode = ListNode(key,value)
+        self.cache[key] = NewNode
+        self.insert(NewNode)
 
         if len(self.cache) > self.cap:
-            lru = self.left.next
-            self.delete(lru)
-            del self.cache[lru.key]
+            LRU = self.left.next
+            self.remove(LRU)
+            del self.cache[LRU.key]
+        
 
-"""
-
-cache
-
- : (1,1)
-4 : (4,4)
-
-L ->  (3,3) -> (4,4) -> R
-"""
         
 
 
