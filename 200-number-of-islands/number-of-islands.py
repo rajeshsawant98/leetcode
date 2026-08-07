@@ -16,18 +16,17 @@ class Solution:
             directions = [ (1,0), (0,1), (-1,0), (0,-1)]
 
             while q:
-                qlen = len(q)
-                for _ in range(qlen):
-                    row, col = q.popleft()
 
-                    for dr, dc in directions:
-                        r,c = row + dr, col + dc
+                row, col = q.popleft()
 
-                        if r<0 or r >= rows or c <0 or c >= cols or grid[r][c] == "0" or (r,c) in visit:
-                            continue
-                        
-                        visit.add((r,c))
-                        q.append((r,c))
+                for dr, dc in directions:
+                    r,c = row + dr, col + dc
+
+                    if r<0 or r >= rows or c <0 or c >= cols or grid[r][c] == "0" or (r,c) in visit:
+                        continue
+                    
+                    visit.add((r,c))
+                    q.append((r,c))
 
 
 
