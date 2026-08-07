@@ -12,15 +12,11 @@ class Solution:
 
         res = defaultdict(list)
 
-        for s in strs:  # n
-            count = [0]*26 # to count the occurence of each chara in the string
-            for c in s: # 
-                count[ord(c) - ord("a")] += 1 
-            res[tuple(count)].append(s)
-        
+        for s in strs:  # n 
+            Count = [0] * 26 
+            for c in s:  # k
+                Count[ord(c) - ord("a")] += 1
+            res[tuple(Count)].append(s)
         return list(res.values())
-
-        # O(n.k)
-        # O(n.k)
 
             
