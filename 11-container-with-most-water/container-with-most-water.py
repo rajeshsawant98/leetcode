@@ -11,10 +11,10 @@ class Solution:
 
             maxArea = max(maxArea, minHeight * width)
 
-            if height[l] <= height[r]:
-                l +=1
-            else:
+            if height[l] > height[r]:
                 r -= 1
+            else:
+                l += 1
             
         return maxArea
 
