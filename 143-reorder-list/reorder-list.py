@@ -8,35 +8,34 @@ class Solution:
         """
         Do not return anything, modify head in-place instead.
         """
-        
-        # split in two list 
+        # split the list in half
         slow,fast = head, head.next
-
+        
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
         
 
-        second = slow.next 
-        slow.next = None
-
-        #reverse the second list  
-
-        prev,curr = None, second 
-        while curr:
-            tmp = curr.next
-            curr.next = prev 
-            prev = curr
-            curr = tmp 
-
-        first,second = head,prev 
-
+        second = slow.next
+        slow.next = prev = None
+        # reverse the second list 
         while second:
-            tmp1, tmp2 = first.next, second.next 
+            tmp = second.next
+            second.next = prev
+            prev = second
+            second = tmp
+        
+        first, second = head, prev
+        # merge both the lists 
+        while second:
+            tmp1, tmp2 = first.next, second.next
             first.next = second
             second.next = tmp1
-            first = tmp1 
+            first = tmp1
             second = tmp2
+
+
+
         
 
 
