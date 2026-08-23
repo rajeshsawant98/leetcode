@@ -6,14 +6,10 @@ class Solution(object):
         :rtype: List[int]
         """
         
-        valueMap = {}
+        Map = {}
 
         for i,n in enumerate(nums):
-
-            diff = target - n 
-            if diff in valueMap:
-                return [valueMap[diff],i]
-            
-            valueMap[n] = i
-        
-    
+            diff = target - n
+            if diff in Map:
+                return [Map[diff],i]
+            Map[n] = i
