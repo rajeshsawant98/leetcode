@@ -11,7 +11,6 @@ class Solution:
                 l += 1
             
             substring.add(s[r])
-            if  res < (r - l + 1):
-                res = (r - l + 1)
+            res = max(res, r - l + 1)
 
         return res
