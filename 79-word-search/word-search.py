@@ -1,32 +1,28 @@
-class Solution(object):
-    def exist(self, board, word):
-        """
-        :type board: List[List[str]]
-        :type word: str
-        :rtype: bool
-        """
-        rows, cols = len(board) ,len(board[0])
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        rows,cols = len(board), len(board[0])
+
         visit = set()
 
-        def dfs(r,c,i):
+        def dfs(i,row,col):
             if i == len(word):
                 return True
 
-            if r <0 or c<0 or r==rows or c==cols or (r,c) in visit or board[r][c] != word[i]:
+            if row >= rows or col >= cols or row < 0 or col < 0 or board[row][col] != word[i] or (row,col) in visit:
                 return False
             
-            visit.add((r,c))
-            res = (dfs(r+1,c,i+1) or 
-                    dfs(r-1,c,i+1) or 
-                    dfs(r,c+1,i+1) or 
-                    dfs(r,c-1,i+1))
-            visit.remove((r,c))
+            
+            visit.add((row,col))
+            res = dfs(i+1,row + 1,col) or dfs(i+1,row - 1,col) or dfs(i+1,row,col + 1) or dfs(i+1,row,col-1)
+
+            visit.remove((row,col))
 
             return res
 
-        
+
         for r in range(rows):
             for c in range(cols):
-                if dfs(r,c,0): return True
-        
+                if dfs(0,r,c):
+                    return True
+
         return False
