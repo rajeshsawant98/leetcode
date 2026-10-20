@@ -7,7 +7,5 @@ class Solution:
                 return [l+1,r+1]
             elif numbers[l] + numbers[r] < target:
                 l +=1
-                continue
             else:
                 r -=1
-                continue
